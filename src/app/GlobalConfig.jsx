@@ -23,7 +23,7 @@ const monoFont = Spline_Sans_Mono({
   variable: '--font-family-mono',
 });
 
-export default function ({ children }) {
+export default function GlobalConfig ({ children }) {
   const [theme, setTheme] = React.useState('light');
 
   React.useLayoutEffect(() => {
