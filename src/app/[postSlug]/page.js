@@ -14,6 +14,7 @@ const DivisionGroupsDemo = dynamic(() =>
 const CircularColorsDemo = dynamic(() =>
   import('@/components/CircularColorsDemo')
 );
+
 const loadBlogPost = React.cache(_loadBlogPost);
 
 export async function generateMetadata({ params }) {
