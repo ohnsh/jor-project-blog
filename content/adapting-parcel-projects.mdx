@@ -1,9 +1,35 @@
 ---
-title: Adapting Parcel Projects to be Next.js Routes
-abstract:
+title: Adapting Parcel Projects for Next.js
+abstract: This Next.js blog is a project from Josh Comeau's Joy of React course. The
+ previous two projects were Parcel apps that I've adapted into components (still built
+ with Parcel) and published on this blog.
 publishedOn: '2025-12-10'
 author: John Sherrell
 ---
 
-- [Wordle clone](/word-game)
-- [Toast component demo](/toast)
+This [Next.js](https://nextjs.org) blog is a project from Josh Comeau's [Joy of React](https://joyofreact.com) course. The previous two projects were [Parcel](https://parcel) apps that I've adapted into components (still built with Parcel) usable by external projects like this blog:
+
+## [Wordle Clone](/word-game)
+
+A word game with a striking resemblance to the daily *New York Times* puzzle.
+
+## [Toast Playground](/toast)
+
+Toasts are user-interface elements commonly used to implement notifications. They are floating, stacking messages that don't affect the layout of the main content. Toasts are designed to be *noticed* by the user without requiring immediate attention.
+
+This demo app consists of a form that can be used to generate toasts of variuos types (notice, warning, success, and error) containing custom messages.
+
+Styles in this project use CSS Modules, meaning that no extra work (or `@scope` rule) was needed to limit their scope within a larger app. I did, however, tweak the provided desktop-only layout to work (better) at mobile sizes. 
+
+The hardest part of building this one as a library was the deceptively cute toaster mascot. It seems that Parcel has its own way of working with images that differs (in my limited experience) from, say, Next.js or Astro. Here's how I got it to work:
+
+```js
+function Mascot() {
+  // There's no actual Mascot component, but this code
+  // is copied directly from the ToastPlayground component.
+  const { href: logo } = new URL('toast.png', import.meta.url)
+  return <img alt="Cute toast mascot" src={logo} />
+}
+```
+
+Interestingly, the code to construct the url from `import.meta.url` is actually shipped in the bundle, along with `toast.png`. In other words, it's used twice: first by Parcel to build the library (npm) bundle, and then again by the consumer (Next.js here) to build the application (browser) bundle.
