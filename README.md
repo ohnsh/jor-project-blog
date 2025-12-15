@@ -1,6 +1,8 @@
 # Blog Project
 ## Joy of React, Project III
 
+*Note: forked from https://github.com/joy-of-react/project-blog*
+
 In this project, we'll build an interactive MDX-based blog using Next.js 14 (App Router):
 
 ![Screenshot of the final product](/docs/end-result.png)
